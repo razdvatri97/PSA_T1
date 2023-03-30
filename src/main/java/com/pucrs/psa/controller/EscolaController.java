@@ -1,12 +1,18 @@
 package com.pucrs.psa.controller;
 
+import com.pucrs.psa.entidate.Estudante;
+import com.pucrs.psa.service.EstudanteService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
+
 @RestController
 public class EscolaController {
+
+    EstudanteService estudanteService;
 
     @GetMapping("/")
     public String home() {
@@ -26,12 +32,13 @@ public class EscolaController {
 
 
     @PostMapping("/cadastrarEstudante")
-    public void cadastrarEstudante(@RequestParam String nome,
-                                   @RequestParam int documento,
-                                   @RequestParam String endereco) {
+    public ArrayList<Estudante> cadastrarEstudante(@RequestParam String nome,
+                                                   @RequestParam int documento,
+                                                   @RequestParam String endereco) {
         //criar matricula unica
         //retornar matricula
 
+        return  estudanteService.cadastrarEstudante(nome, documento, endereco);
     }
 
     @GetMapping("/consultar/{id}")
