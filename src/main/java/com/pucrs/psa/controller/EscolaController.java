@@ -35,8 +35,6 @@ public class EscolaController {
     public ArrayList<Estudante> cadastrarEstudante(@RequestParam String nome,
                                                    @RequestParam int documento,
                                                    @RequestParam String endereco) {
-        //criar matricula unica
-        //retornar matricula
 
         return  estudanteService.cadastrarEstudante(nome, documento, endereco);
     }

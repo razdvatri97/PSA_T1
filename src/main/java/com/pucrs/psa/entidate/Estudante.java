@@ -1,19 +1,27 @@
 package com.pucrs.psa.entidate;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 public class Estudante {
 
     String nome;
     int documento;
     String endereco;
 
-    String matricula;
+    int matricula;
 
 
-    public Estudante(String nome, int documento, String endereco, String matricula) {
+    public Estudante(String nome, int documento, String endereco ) {
         this.nome = nome;
         this.documento = documento;
         this.endereco = endereco;
-        this.matricula = matricula;
+        this.matricula = getIncremento();
+    }
+
+    private int getIncremento() {
+        AtomicInteger matricula = new AtomicInteger();
+        matricula.addAndGet(1);
+        return matricula.get();
     }
 
     public Estudante() {
@@ -41,5 +49,9 @@ public class Estudante {
 
     public void setEndereco(String endereco) {
         this.endereco = endereco;
+    }
+
+    public int getMatricula() {
+        return matricula;
     }
 }
