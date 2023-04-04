@@ -4,6 +4,7 @@ import com.pucrs.psa.entidate.Estudante;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class EstudanteService {
 
@@ -11,15 +12,10 @@ public class EstudanteService {
 
     public ArrayList<Estudante> cadastrarEstudante(String nome, int documento, String endereco){
 
-        String matricula ="randomizar";
-
-
-        Estudante estudante = new Estudante(nome, documento, endereco, matricula);
-
+        Estudante estudante = new Estudante(nome, documento, endereco);
 
         listaEstudantes.add(estudante);
 
         return listaEstudantes;
-
     }
 }
