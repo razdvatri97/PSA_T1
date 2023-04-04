@@ -31,10 +31,10 @@ public class EscolaController {
     }
 
 
-    @PostMapping("/cadastrarEstudante")
-    public ArrayList<Estudante> cadastrarEstudante(@RequestParam String nome,
-                                                   @RequestParam int documento,
-                                                   @RequestParam String endereco) {
+    @GetMapping(value = "/cadastrarEstudante")
+    public ArrayList<Estudante> cadastrarEstudante(@RequestParam (value="nome") String nome,
+                                                   @RequestParam (value="documento") int documento,
+                                                   @RequestParam (value="endereco")String endereco) {
 
         return  estudanteService.cadastrarEstudante(nome, documento, endereco);
     }
