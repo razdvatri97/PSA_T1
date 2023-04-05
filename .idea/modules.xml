@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.pucrs.psa.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.pucrs.psa.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/psa.main.iml" filepath="$PROJECT_DIR$/.idea/modules/psa.main.iml" />
     </modules>
   </component>
