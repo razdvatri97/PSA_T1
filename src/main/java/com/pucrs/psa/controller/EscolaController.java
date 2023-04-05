@@ -3,7 +3,6 @@ package com.pucrs.psa.controller;
 import com.pucrs.psa.entidate.Estudante;
 import com.pucrs.psa.service.EstudanteService;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -14,18 +13,18 @@ public class EscolaController {
 
     EstudanteService estudanteService;
 
-    @GetMapping("/")
+    @GetMapping(value= "/")
     public String home() {
         return "Olá";
     }
 
-    @PostMapping("/login")
+    @GetMapping(value= "/login")
     public void login(@RequestParam String email,
                       @RequestParam String senha){
 
     }
 
-    @PostMapping("/logout")
+    @GetMapping(value="/logout")
     public void logout(@RequestParam String email){
 
     }
@@ -39,16 +38,16 @@ public class EscolaController {
         return  estudanteService.cadastrarEstudante(nome, documento, endereco);
     }
 
-    @GetMapping("/consultar/{id}")
+    @GetMapping(value="/consultar/{id}")
     public void consultarEstudante() {
         //ou por matricula ou por nome
     }
 
-    @GetMapping("/consultarTodos")
+    @GetMapping(value="/consultarTodos")
     public void listarTodosEstudante() {
     }
 
-    @PostMapping("/cadastrarDisciplina")
+    @GetMapping(value="/cadastrarDisciplina")
     public void cadastrarDisciplina
             (@RequestParam int codicoDisciplina,
              @RequestParam String nome,
@@ -57,7 +56,7 @@ public class EscolaController {
         //horario por codigo
     }
 
-    @PostMapping("/matricularEsudanteDisciplina")
+    @GetMapping("/matricularEsudanteDisciplina")
     public void matricularEstudanteDisciplina(@RequestParam String codicoDisciplina,
                                               @RequestParam int turma,
                                               @RequestParam String matricula){
@@ -75,7 +74,7 @@ public class EscolaController {
         //listar alunos matriculados em uma determinada disciplina e turma
     }
 
-    @PostMapping("/cadastrarFuncionario/")
+    @GetMapping("/cadastrarFuncionario/")
     public void cadastrarFuncionario(@RequestParam String nome,
                                      @RequestParam String email,
                                      @RequestParam String senha){
