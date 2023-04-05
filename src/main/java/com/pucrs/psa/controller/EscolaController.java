@@ -2,49 +2,39 @@ package com.pucrs.psa.controller;
 
 import com.pucrs.psa.entidate.Estudante;
 import com.pucrs.psa.service.EstudanteService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 
 @RestController
+@RequiredArgsConstructor
 public class EscolaController {
 
-    EstudanteService estudanteService;
+    private final EstudanteService estudanteService;
 
     @GetMapping(value= "/")
     public String home() {
         return "Olá";
     }
 
-    @GetMapping(value= "/login")
-    public void login(@RequestParam String email,
-                      @RequestParam String senha){
-
-    }
-
-    @GetMapping(value="/logout")
-    public void logout(@RequestParam String email){
-
-    }
-
-
     @GetMapping(value = "/cadastrarEstudante")
     public ArrayList<Estudante> cadastrarEstudante(@RequestParam (value="nome") String nome,
                                                    @RequestParam (value="documento") int documento,
                                                    @RequestParam (value="endereco")String endereco) {
 
-        return  estudanteService.cadastrarEstudante(nome, documento, endereco);
+        return  estudanteService.cadastrarEstudante (nome, documento, endereco);
     }
 
-    @GetMapping(value="/consultar/{id}")
-    public void consultarEstudante() {
-        //ou por matricula ou por nome
+    @ResponseBody
+    @GetMapping(value="/consultar/{nome}")
+    public Estudante consultarEstudante(@PathVariable String nome) {
+        return estudanteService.consultarEstudante(nome);
     }
 
-    @GetMapping(value="/consultarTodos")
-    public void listarTodosEstudante() {
+    @GetMapping(value="/consultarTodosEstudantes")
+    public ArrayList<Estudante> consultarTodosEstudantes() {
+        return estudanteService.consultarTodosEstudantes();
     }
 
     @GetMapping(value="/cadastrarDisciplina")
@@ -80,5 +70,16 @@ public class EscolaController {
                                      @RequestParam String senha){
 
         //retorna mensagem de sucesso ou falha
+    }
+
+    @GetMapping(value= "/login")
+    public void login(@RequestParam String email,
+                      @RequestParam String senha){
+
+    }
+
+    @GetMapping(value="/logout")
+    public void logout(@RequestParam String email){
+
     }
 }
