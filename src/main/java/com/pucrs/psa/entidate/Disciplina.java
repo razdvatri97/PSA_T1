@@ -2,12 +2,15 @@ package com.pucrs.psa.entidate;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.ArrayList;
+
 public class Disciplina {
 
     int codigoDisciplina;
     String nome;
     String horario;
     int turma;
+    ArrayList<Estudante> matriculados;
 
     public Disciplina(int codigoDisciplina, String nome, String horario, int turma) {
         this.codigoDisciplina = codigoDisciplina;
@@ -46,5 +49,12 @@ public class Disciplina {
 
     public void setTurma(int turma) {
         this.turma = turma;
+    }
+
+    public ArrayList<Estudante> getMatriculados() { return matriculados; }
+
+    public boolean setMatriculados(Estudante estudante) {
+        matriculados.add(estudante);
+        return true;
     }
 }

@@ -9,15 +9,11 @@ public class FuncionarioService {
 
     ArrayList<Funcionario> listaFuncionarios;
 
-    public ArrayList<Funcionario> cadastrarFuncionario(String nome, String email, String senha){
+    public Funcionario cadastrarFuncionario(String nome, String email, String senha){
 
-
-        Funcionario funcionario = new Funcionario(nome, email, senha);
-
-
+        Funcionario funcionario = new Funcionario(nome.toLowerCase(), email.toLowerCase(), senha.toLowerCase());
         listaFuncionarios.add(funcionario);
 
-        return listaFuncionarios;
-
+        return funcionario;
     }
 }

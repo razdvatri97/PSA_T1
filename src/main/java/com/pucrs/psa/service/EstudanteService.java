@@ -20,25 +20,32 @@ public class EstudanteService {
         this.listaEstudantes = listaEstudantes;
     }
 
-    public ArrayList<Estudante> cadastrarEstudante(String nome, int documento, String endereco){
+    public Estudante cadastrarEstudante(String nome, int documento, String endereco){
 
-        listaEstudantes.add(new Estudante(nome.toLowerCase(), documento, endereco.toLowerCase()));
+         Estudante estudante = new Estudante(nome.toLowerCase(), documento, endereco.toLowerCase());
+         listaEstudantes.add(estudante);
 
-        return listaEstudantes;
+        return estudante;
     }
 
     public Estudante consultarEstudante(String nome) {
 
             for (Estudante estudante : listaEstudantes) {
-                if (estudante.getNome().equals(nome.toLowerCase())) {
+                if (estudante.getNome().equals(nome.toLowerCase()))
                     return estudante;
-                }
-
             }
         return null;
     }
 
     public ArrayList<Estudante> consultarTodosEstudantes() {
          return listaEstudantes;
+    }
+
+    public Estudante encontraAlunoMatricula(int matricula) {
+         for (Estudante estudante: listaEstudantes){
+             if (matricula == estudante.getMatricula())
+                 return estudante;
+         }
+         return null;
     }
 }
